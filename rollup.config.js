@@ -1,3 +1,6 @@
+import nodeResolve from '@rollup/plugin-node-resolve';
+import nodePolyfills from 'rollup-plugin-polyfill-node';
+
 export default {
   input: 'dist/esm/index.js',
   output: [
@@ -10,6 +13,10 @@ export default {
       },
       sourcemap: true,
       inlineDynamicImports: true,
+      plugins: [
+        nodeResolve({exportConditions: ['node']}),
+        nodePolyfills({include: ['crypto']})
+      ]
     },
     {
       file: 'dist/plugin.cjs.js',
@@ -18,5 +25,5 @@ export default {
       inlineDynamicImports: true,
     },
   ],
-  external: ['@capacitor/core'],
+  external: ['@capacitor/core', '@solana/wallet-adapter-wallets'],
 };
