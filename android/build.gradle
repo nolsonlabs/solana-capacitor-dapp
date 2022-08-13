@@ -64,6 +64,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
     implementation 'androidx.activity:activity-ktx:1.5.1'
     implementation "android.arch.lifecycle:extensions:1.1.1"
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.5.1'
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"

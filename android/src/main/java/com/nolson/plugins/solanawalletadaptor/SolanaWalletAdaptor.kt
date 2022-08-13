@@ -11,23 +11,27 @@ import java.util.concurrent.CancellationException
 import java.util.concurrent.ExecutionException
 import java.util.concurrent.TimeoutException
 
-import com.getcapacitor.JSObject
-import com.getcapacitor.Plugin
 import com.getcapacitor.annotation.CapacitorPlugin
-import com.getcapacitor.PluginMethod
-import com.getcapacitor.PluginCall
 
 import android.app.Application
+import android.app.Activity
 import androidx.activity.viewModels
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import androidx.annotation.GuardedBy
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelStore
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelStoreOwner
+import com.getcapacitor.*
 
 import com.nolson.plugins.solanawalletadaptor.clientlib.protocol.JsonRpc20Client
 import com.nolson.plugins.solanawalletadaptor.clientlib.scenario.LocalAssociationIntentCreator
@@ -47,20 +51,13 @@ import kotlinx.coroutines.sync.withPermit
 import java.util.concurrent.TimeUnit
 import kotlin.random.Random
 
-class SolanaWalletAdaptor {
+class SolanaWalletAdaptor(application: Application): AndroidViewModel(application) {
 
     private val mobileWalletAdapterClientSem = Semaphore(1) // allow only a single MWA connection at a time
 
     fun echo(value: String): String {
         Log.i("Echo", value)
         return value
-    }
-
-    fun listAvailableWallets(): Array<String?> {
-        val wallets = arrayOfNulls<String>(1)
-        val walletString = "phantom-hardcoded"
-        wallets[0] = walletString
-        return wallets
     }
 
     fun isPackageInstalled(packageName: String?, packageManager: PackageManager): Boolean {
@@ -74,6 +71,14 @@ class SolanaWalletAdaptor {
 
     fun checkIsWalletEndpointAvailable(packageManager: PackageManager): Boolean {
         return LocalAssociationIntentCreator.isWalletEndpointAvailable(packageManager)
+    }
+
+    fun authorize(sender: StartActivityForResultSender) = viewModelScope.launch {
+        val result = localAssociateAndExecute(sender) { client ->
+            doAuthorize(client)
+        }
+
+       // showMessage(if (result == true) R.string.msg_request_succeeded else R.string.msg_request_failed)
     }
 
     fun doAuthorize(client: MobileWalletAdapterClient): Boolean {
@@ -132,29 +137,6 @@ class SolanaWalletAdaptor {
         }
 
        // showMessage(if (result != null) R.string.msg_request_succeeded else R.string.msg_request_failed)
-    }
-
-    private val intentSender = object : StartActivityForResultSender {
-        @GuardedBy("this")
-        private var callback: (() -> Unit)? = null
-
-        override fun startActivityForResult(
-            intent: Intent,
-            onActivityCompleteCallback: () -> Unit
-        ) {
-            synchronized(this) {
-                check(callback == null) { "Received an activity start request while another is pending" }
-                callback = onActivityCompleteCallback
-            }
-            this@SolanaWalletAdaptor.startActivityForResult(intent, WALLET_ACTIVITY_REQUEST_CODE)
-        }
-
-        fun onActivityComplete() {
-            synchronized(this) {
-                callback?.let { it() }
-                callback = null
-            }
-        }
     }
 
     private fun doGetCapabilities(client: MobileWalletAdapterClient): MobileWalletAdapterClient.GetCapabilitiesResult? {
@@ -242,6 +224,29 @@ class SolanaWalletAdaptor {
         }
     }
 
+    private val intentSender = object : SolanaWalletAdaptor.StartActivityForResultSender {
+        @GuardedBy("this")
+        private var callback: (() -> Unit)? = null
+
+        override fun startActivityForResult(
+            intent: Intent,
+            onActivityCompleteCallback: () -> Unit
+        ) {
+            synchronized(this) {
+                check(callback == null) { "Received an activity start request while another is pending" }
+                callback = onActivityCompleteCallback
+            }
+            BridgeActivity.startActivityForResult(intent, WALLET_ACTIVITY_REQUEST_CODE)
+        }
+
+        fun onActivityComplete() {
+            synchronized(this) {
+                callback?.let { it() }
+                callback = null
+            }
+        }
+    }
+
     interface StartActivityForResultSender {
         fun startActivityForResult(intent: Intent, onActivityCompleteCallback: () -> Unit) // throws ActivityNotFoundException
     }
@@ -256,3 +261,4 @@ class SolanaWalletAdaptor {
     }
 
 }
+
