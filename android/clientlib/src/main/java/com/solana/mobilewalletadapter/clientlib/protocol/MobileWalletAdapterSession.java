@@ -2,17 +2,17 @@
  * Copyright (c) 2022 Solana Mobile Inc.
  */
 
-package com.nolson.plugins.solanawalletadaptor.clientlib.protocol;
+package com.solana.mobilewalletadapter.clientlib.protocol;
 
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.nolson.plugins.solanawalletadaptor.common.crypto.ECDSAKeys;
-import com.nolson.plugins.solanawalletadaptor.common.protocol.MessageReceiver;
-import com.nolson.plugins.solanawalletadaptor.common.protocol.MobileWalletAdapterSessionCommon;
-import com.nolson.plugins.solanawalletadaptor.common.crypto.ECDSASignatures;
+import com.solana.mobilewalletadapter.common.crypto.ECDSAKeys;
+import com.solana.mobilewalletadapter.common.protocol.MessageReceiver;
+import com.solana.mobilewalletadapter.common.protocol.MobileWalletAdapterSessionCommon;
+import com.solana.mobilewalletadapter.common.crypto.ECDSASignatures;
 
 import java.io.IOException;
 import java.security.InvalidKeyException;

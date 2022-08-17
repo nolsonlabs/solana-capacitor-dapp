@@ -2,13 +2,13 @@
  * Copyright (c) 2022 Solana Mobile Inc.
  */
 
-package com.nolson.plugins.solanawalletadaptor.clientlib.scenario;
+package com.solana.mobilewalletadapter.clientlib.scenario;
 
 import androidx.annotation.IntRange;
 import androidx.annotation.NonNull;
 
-import com.nolson.plugins.solanawalletadaptor.clientlib.protocol.MobileWalletAdapterClient;
-import com.nolson.plugins.solanawalletadaptor.common.util.NotifyOnCompleteFuture;
+import com.solana.mobilewalletadapter.clientlib.protocol.MobileWalletAdapterClient;
+import com.solana.mobilewalletadapter.common.util.NotifyOnCompleteFuture;
 
 public abstract class Scenario {
     public static final int DEFAULT_CLIENT_TIMEOUT_MS = 90000;

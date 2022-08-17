@@ -2,7 +2,7 @@
  * Copyright (c) 2022 Solana Mobile Inc.
  */
 
-package com.nolson.plugins.solanawalletadaptor.clientlib.protocol;
+package com.solana.mobilewalletadapter.clientlib.protocol;
 
 import android.util.Log;
 
@@ -11,10 +11,10 @@ import androidx.annotation.IntRange;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.nolson.plugins.solanawalletadaptor.common.protocol.MessageReceiver;
-import com.nolson.plugins.solanawalletadaptor.common.protocol.MessageSender;
-import com.nolson.plugins.solanawalletadaptor.common.util.NotifyOnCompleteFuture;
-import com.nolson.plugins.solanawalletadaptor.common.util.NotifyingCompletableFuture;
+import com.solana.mobilewalletadapter.common.protocol.MessageReceiver;
+import com.solana.mobilewalletadapter.common.protocol.MessageSender;
+import com.solana.mobilewalletadapter.common.util.NotifyOnCompleteFuture;
+import com.solana.mobilewalletadapter.common.util.NotifyingCompletableFuture;
 
 import org.json.JSONArray;
 import org.json.JSONException;

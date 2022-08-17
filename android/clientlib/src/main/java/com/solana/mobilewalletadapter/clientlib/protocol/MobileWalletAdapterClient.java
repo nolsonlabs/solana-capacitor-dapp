@@ -2,7 +2,7 @@
  * Copyright (c) 2022 Solana Mobile Inc.
  */
 
-package com.nolson.plugins.solanawalletadaptor.clientlib.protocol;
+package com.solana.mobilewalletadapter.clientlib.protocol;
 
 import android.net.Uri;
 
@@ -11,9 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.Size;
 
-import com.nolson.plugins.solanawalletadaptor.common.ProtocolContract;
-import com.nolson.plugins.solanawalletadaptor.common.util.JsonPack;
-import com.nolson.plugins.solanawalletadaptor.common.util.NotifyOnCompleteFuture;
+import com.solana.mobilewalletadapter.common.ProtocolContract;
+import com.solana.mobilewalletadapter.common.util.JsonPack;
+import com.solana.mobilewalletadapter.common.util.NotifyOnCompleteFuture;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -129,13 +129,17 @@ public class MobileWalletAdapterClient extends JsonRpc20Client {
         @NonNull
         public final byte[] publicKey;
         @Nullable
+        public final String accountLabel;
+        @Nullable
         public final Uri walletUriBase;
 
         private AuthorizationResult(@NonNull String authToken,
                                     @NonNull byte[] publicKey,
+                                    @Nullable String accountLabel,
                                     @Nullable Uri walletUriBase) {
             this.authToken = authToken;
             this.publicKey = publicKey;
+            this.accountLabel = accountLabel;
             this.walletUriBase = walletUriBase;
         }
 
@@ -145,6 +149,7 @@ public class MobileWalletAdapterClient extends JsonRpc20Client {
             return "AuthorizationResult{" +
                     "authToken=<REDACTED>" +
                     ", publicKey=" + Arrays.toString(publicKey) +
+                    ", accountLabel='" + accountLabel + '\'' +
                     ", walletUriBase=" + walletUriBase +
                     '}';
         }
@@ -175,11 +180,17 @@ public class MobileWalletAdapterClient extends JsonRpc20Client {
             }
 
             final byte[] publicKey;
+            final String accountLabel;
             try {
                 final JSONArray accounts = jo.getJSONArray(ProtocolContract.RESULT_ACCOUNTS);
                 final JSONObject account = accounts.getJSONObject(0); // TODO(#44): support multiple addresses
                 final String b64EncodedAddress = account.getString(ProtocolContract.RESULT_ACCOUNTS_ADDRESS);
                 publicKey = JsonPack.unpackBase64PayloadToByteArray(b64EncodedAddress);
+                if (account.has(ProtocolContract.RESULT_ACCOUNTS_LABEL)) {
+                    accountLabel = account.getString(ProtocolContract.RESULT_ACCOUNTS_LABEL);
+                } else {
+                    accountLabel = null;
+                }
             } catch (JSONException e) {
                 throw new JsonRpc20InvalidResponseException("expected one or more addresses");
             }
@@ -192,7 +203,7 @@ public class MobileWalletAdapterClient extends JsonRpc20Client {
                         walletUriBaseStr + "'; expected a 'https' URI");
             }
 
-            return new AuthorizationResult(authToken, publicKey, walletUriBase);
+            return new AuthorizationResult(authToken, publicKey, accountLabel, walletUriBase);
         }
 
         @Override

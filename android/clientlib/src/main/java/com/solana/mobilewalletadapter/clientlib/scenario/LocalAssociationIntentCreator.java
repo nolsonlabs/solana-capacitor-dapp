@@ -2,7 +2,7 @@
  * Copyright (c) 2022 Solana Mobile Inc.
  */
 
-package com.nolson.plugins.solanawalletadaptor.clientlib.scenario;
+package com.solana.mobilewalletadapter.clientlib.scenario;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -14,8 +14,8 @@ import androidx.annotation.IntRange;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.nolson.plugins.solanawalletadaptor.clientlib.protocol.MobileWalletAdapterSession;
-import com.nolson.plugins.solanawalletadaptor.common.AssociationContract;
+import com.solana.mobilewalletadapter.clientlib.protocol.MobileWalletAdapterSession;
+import com.solana.mobilewalletadapter.common.AssociationContract;
 
 public class LocalAssociationIntentCreator {
 

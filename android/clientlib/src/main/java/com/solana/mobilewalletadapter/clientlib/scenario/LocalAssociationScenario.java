@@ -2,7 +2,7 @@
  * Copyright (c) 2022 Solana Mobile Inc.
  */
 
-package com.nolson.plugins.solanawalletadaptor.clientlib.scenario;
+package com.solana.mobilewalletadapter.clientlib.scenario;
 
 import android.util.Log;
 
@@ -10,13 +10,13 @@ import androidx.annotation.GuardedBy;
 import androidx.annotation.IntRange;
 import androidx.annotation.NonNull;
 
-import com.nolson.plugins.solanawalletadaptor.clientlib.protocol.MobileWalletAdapterClient;
-import com.nolson.plugins.solanawalletadaptor.clientlib.protocol.MobileWalletAdapterSession;
-import com.nolson.plugins.solanawalletadaptor.clientlib.transport.websockets.MobileWalletAdapterWebSocket;
-import com.nolson.plugins.solanawalletadaptor.common.WebSocketsTransportContract;
-import com.nolson.plugins.solanawalletadaptor.common.protocol.MobileWalletAdapterSessionCommon;
-import com.nolson.plugins.solanawalletadaptor.common.util.NotifyOnCompleteFuture;
-import com.nolson.plugins.solanawalletadaptor.common.util.NotifyingCompletableFuture;
+import com.solana.mobilewalletadapter.clientlib.protocol.MobileWalletAdapterClient;
+import com.solana.mobilewalletadapter.clientlib.protocol.MobileWalletAdapterSession;
+import com.solana.mobilewalletadapter.clientlib.transport.websockets.MobileWalletAdapterWebSocket;
+import com.solana.mobilewalletadapter.common.WebSocketsTransportContract;
+import com.solana.mobilewalletadapter.common.protocol.MobileWalletAdapterSessionCommon;
+import com.solana.mobilewalletadapter.common.util.NotifyOnCompleteFuture;
+import com.solana.mobilewalletadapter.common.util.NotifyingCompletableFuture;
 
 import java.net.URI;
 import java.net.URISyntaxException;

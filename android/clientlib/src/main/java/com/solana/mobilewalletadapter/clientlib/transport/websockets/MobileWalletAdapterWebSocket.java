@@ -2,7 +2,7 @@
  * Copyright (c) 2022 Solana Mobile Inc.
  */
 
-package com.nolson.plugins.solanawalletadaptor.clientlib.transport.websockets;
+package com.solana.mobilewalletadapter.clientlib.transport.websockets;
 
 import android.util.Log;
 
@@ -17,9 +17,9 @@ import com.neovisionaries.ws.client.WebSocketExtension;
 import com.neovisionaries.ws.client.WebSocketFactory;
 import com.neovisionaries.ws.client.WebSocketFrame;
 import com.neovisionaries.ws.client.WebSocketListener;
-import com.nolson.plugins.solanawalletadaptor.common.WebSocketsTransportContract;
-import com.nolson.plugins.solanawalletadaptor.common.protocol.MessageReceiver;
-import com.nolson.plugins.solanawalletadaptor.common.protocol.MessageSender;
+import com.solana.mobilewalletadapter.common.WebSocketsTransportContract;
+import com.solana.mobilewalletadapter.common.protocol.MessageReceiver;
+import com.solana.mobilewalletadapter.common.protocol.MessageSender;
 
 import java.io.IOException;
 import java.net.URI;
