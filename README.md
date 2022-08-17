@@ -1,5 +1,5 @@
-<h1>CapacitorJS plugin for Solana dApps<h1>
-  
+<h1>CapacitorJS plugin for Solana dApps</h1>  
+
   <p>My goal with this project is to help drive the adoption of Solana SDKs across mobile & web. By providing an open source CapacitorJS plugin based on the existing Solana SDKs the idea is make it easier for more developers to build cross-platform dApps.<p>
     
   <p>CapacitorJS is part of the Ionic ecosysystem and has a large and active community of developers. Capacitor/Ionic is found in approximately 10% of all Apps on Google Play and the App Store and averages around 200,000 weekly downloads on npm.</p>
