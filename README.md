@@ -1,3 +1,5 @@
+<img src="https://github.com/nolsonlabs/solana-capacitor-dapp/blob/main/Solana-Mobile-x-Capacitor.png?raw=true">.
+
 <h1>CapacitorJS plugin for Solana dApps</h1>  
 
   <p>My goal with this project is to help drive the adoption of Solana SDKs across mobile & web. By providing an open source CapacitorJS plugin based on the existing Solana SDKs the idea is make it easier for more developers to build cross-platform dApps.<p>
