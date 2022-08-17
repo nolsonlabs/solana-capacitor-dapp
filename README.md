@@ -15,7 +15,7 @@
   <h3>Current State</h3>
   <p>The plugin was built as a proof-of-concept in just over a week at the Singapore Solana Summer Camp 2022. It is <b>definitely not</b> ready for production use.</p>
   <p>The plugin is a wrapper around the Kotlin "fake dApp" Android application build by the core Solana Mobile team (see https://github.com/solana-mobile/mobile-wallet-adapter/tree/main/android/fakedapp). It allows a developer building a web app to access to all the methods in MainViewModel.kt in the underlying Kotlin project.</p>
-  <p>Wallet detection functionality has also been added. The plugin is able to detect which apps are installed and available in the environment in which it is running (i.e. web browser or Android). The current implementation for Android relies on manifest permissions settings that may require prior agreement from Play Store moderators.</p>
+  <p>Wallet detection functionality has also been added. The plugin is able to detect which apps are installed and available in the environment in which it is running (i.e. web browser or Android). The current implementation for Android relies on manifest permissions settings that may require prior agreement from Play Store moderators. Please note that this is only currently only implemented for wallets that offer transaction / deeplink functionality.</p>
   <h4>Demo</h4>
   <p>The code is this repo is the Capacitor source code for the plugin.<p>
   <p>There is a companion repo here () which contains an Angular front end which can be deployed to the web and Android devices using Android studio and the Ionic/Capacitor CLI. Full instructions are in the readme for that repo.<p>
