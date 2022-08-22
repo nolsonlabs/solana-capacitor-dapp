@@ -50,8 +50,9 @@ allprojects {
 repositories {
     google()
     mavenCentral()
+ }
 }
-}
+
 
 
 dependencies {
