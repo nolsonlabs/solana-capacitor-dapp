@@ -1,6 +1,6 @@
 {
   "name": "solana-wallet-adaptor-capacitor",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "Capacitor implementation of Solana mobile wallet adaptor",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
