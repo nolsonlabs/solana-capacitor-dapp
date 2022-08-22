@@ -46,15 +46,17 @@ android {
     }
 }
 
+allprojects {
 repositories {
     google()
     mavenCentral()
+}
 }
 
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(':capacitor-android')
+    implementation project(path: ':capacitor-android')
     implementation "androidx.appcompat:appcompat:$androidxAppCompatVersion"
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
     implementation 'com.neovisionaries:nv-websocket-client:2.14'
@@ -64,8 +66,8 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
     implementation 'androidx.activity:activity-ktx:1.5.1'
     implementation "android.arch.lifecycle:extensions:1.1.1"
-    implementation project(path: ':clientlib')
     implementation 'androidx.benchmark:benchmark-common:1.0.0'
+    implementation project(path: ':clientlib')
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"

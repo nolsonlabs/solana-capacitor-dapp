@@ -1,5 +1,5 @@
 {
-  "name": "@nolson/solana-wallet-adaptor-capacitor",
+  "name": "solana-wallet-adaptor-capacitor",
   "version": "0.0.1",
   "description": "Capacitor implementation of Solana mobile wallet adaptor",
   "main": "dist/plugin.cjs.js",
@@ -37,7 +37,7 @@
     "eslint": "eslint . --ext ts",
     "prettier": "prettier \"**/*.{css,html,ts,js,java}\"",
     "swiftlint": "node-swiftlint",
-    "docgen": "docgen --api SolanaWalletAdaptorPlugin --output-readme README.md --output-json dist/docs.json",
+    "docgen": "docgen --api SolanaWalletAdaptorPlugin --output-readme API.md --output-json dist/docs.json",
     "build": "npm run clean && npm run docgen && tsc && rollup -c rollup.config.js",
     "clean": "rimraf ./dist",
     "watch": "tsc --watch",
@@ -53,6 +53,7 @@
     "@ionic/swiftlint-config": "^1.1.2",
     "@types/keccak": "^3.0.1",
     "@types/node-fetch": "^2.6.2",
+    "@types/pino": "^7.0.5",
     "@types/readable-stream": "^2.3.14",
     "eslint": "^7.11.0",
     "prettier": "~2.3.0",
@@ -80,10 +81,11 @@
     }
   },
   "dependencies": {
+    "@capacitor/device": "^4.0.1",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@solana-mobile/wallet-adapter-mobile": "^0.9.0",
-    "@solana/wallet-adapter-base": "^0.9.10",
-    "@solana/wallet-adapter-wallets": "^0.17.2",
+    "@solana/wallet-adapter-base": "^0.9.13",
+    "@solana/wallet-adapter-wallets": "^0.18.2",
     "@solana/web3.js": "^1.50.1",
     "crypto-browserify": "^3.12.0",
     "stream-browserify": "^3.0.0"

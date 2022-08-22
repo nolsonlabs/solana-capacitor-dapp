@@ -1,12 +1,16 @@
+import type { WalletInfo } from './walletinfo.interface';
+
 export interface SolanaWalletAdaptorPlugin {
 
-  listAvailableWallets(): Promise<{ wallets: string[] }>;
-  isPackageInstalled(options: { value: string }): Promise<{ installed: boolean }>;
-  connectToWallet(walletName: string): Promise<{ connected: boolean }>;
+  // Fakewallet specific
   checkIsWalletEndpointAvailable(): Promise<{endpointAvailable: boolean}>;
   getCapabilities(): Promise<{ capabilitiesRequested: boolean}>;
-  installedApps(): Promise<{
-    installed: string[]
+
+  // Cross platform
+  getWalletAndEnvironmentInfo(): Promise<{
+    dAppPlatform: string,
+    dAppOs: string,
+    walletInfo: WalletInfo[]
   }>;
   authorize(wallet: string): Promise<{ 
     authorized: boolean,

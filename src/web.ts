@@ -1,77 +1,43 @@
 import { WebPlugin } from '@capacitor/core';
-// import { WalletAdapter, WalletReadyState } from '@solana/wallet-adapter-base';
-import { SolanaMobileWalletAdapter,
-        createDefaultAddressSelector,
-        createDefaultAuthorizationResultCache,
-      } from '@solana-mobile/wallet-adapter-mobile';
-import {
-    PhantomWalletAdapter,
-    SlopeWalletAdapter,
-    SolflareWalletAdapter,
-} from '@solana/wallet-adapter-wallets';
-// import { Connection } from '@solana/web3.js';
-// import { clusterApiUrl, Cluster } from '@solana/web3.js';
+import { Device } from '@capacitor/device';
+import type { PhantomWalletAdapter} from '@solana/wallet-adapter-wallets';
 
 import type { SolanaWalletAdaptorPlugin } from './definitions';
+import { WalletDescriptions } from './wallet.descriptions';
+import type { WalletInfo } from './walletinfo.interface';
 
 export class SolanaWalletAdaptorWeb
   extends WebPlugin
   implements SolanaWalletAdaptorPlugin
 {
-
-  async listAvailableWallets(): Promise<{ wallets: string[] }> {
-    const phantom = new PhantomWalletAdapter().readyState;
-    const solflare = new SolflareWalletAdapter().readyState;
-    const slope = new SlopeWalletAdapter().readyState;
-    const wallets: string[] = [phantom, solflare, slope];
-    return {wallets};
-  }
-
   
-  async installedApps(): Promise<{ installed: string[]}> {
-    const phantom = new PhantomWalletAdapter().readyState;
-    const solflare = new SolflareWalletAdapter().readyState;
-    const slope = new SlopeWalletAdapter().readyState;
-    const outputArr = [];
-    if (phantom == 'Installed') {
-      outputArr.push('app.phantom');
-    }
-    if (solflare == 'Installed') {
-      outputArr.push('com.solflare.mobile')
-    }
-    if (slope == 'Installed') {
-      outputArr.push('com.y8.slope')
-    }
+  async getWalletAndEnvironmentInfo(): Promise<{ dAppPlatform: string, dAppOs: string, walletInfo: WalletInfo[]}> {
+    const walletInfo: any[] = [];
+    const walletDescriptions = (new WalletDescriptions).wallets;
+    Object.keys(walletDescriptions).forEach((walletKey: string) => {
+      const wallet = walletDescriptions[walletKey];
+      const instance = wallet.walletAdapter;
+      let installed = false;
+      if (instance.readyState == 'Installed') {
+        installed = true;
+      }
+      const walletInfoObject = {
+        walletName: wallet.walletName,
+        walletInstalled: installed,
+        walletHasDeepLinkCapability: wallet.walletHasDeeplinkCapability,
+        walletIcon: wallet.walletIcon
+      }
 
+      walletInfo.push(walletInfoObject);
 
-    return { installed: outputArr }
-  }
-
-  async connectToWallet(walletName: string): Promise<{ connected: boolean }> {
-    if (walletName === 'phantom') {
-      // connect to phantom
-      const app = new SolanaMobileWalletAdapter({
-        addressSelector: createDefaultAddressSelector(),
-        appIdentity: {
-            name: 'Phantom test',
-            uri: 'app.phantom',
-            //uri: 'https://phantom.app/ul/v1/connect',
-            // icon: './favicon.png',
-       },
-        authorizationResultCache: createDefaultAuthorizationResultCache(),
-        cluster: 'devnet'
     });
 
-     await app.connect();
-
-
+    const deviceInfo = await Device.getInfo();
+    return { 
+      dAppPlatform: deviceInfo.platform,
+      dAppOs: deviceInfo.operatingSystem,
+      walletInfo: walletInfo
     }
-    return {connected: true};
-  }
-
-  async disconnectWallet(walletName: string): Promise<string> {
-    // Disconnect wallet
-    return walletName;
   }
 
   async isPackageInstalled(): Promise<{ installed: boolean }> {
@@ -91,15 +57,16 @@ export class SolanaWalletAdaptorWeb
     publicKey: any,
     connection: any
     }> {
-      if (wallet === 'Phantom') {
-        const phantom = new PhantomWalletAdapter();
-        await phantom.connect()
-        phantom.publicKey
-        return { authorized: true, authToken: '', publicKey: phantom.publicKey, connection: phantom};
-      }
+      const walletDescriptions = (new WalletDescriptions).wallets;
+      const adapter = walletDescriptions[wallet.toLowerCase()].walletAdapter;
 
-    return { authorized: true, authToken: '', publicKey: '', connection: null};
-  }
+      try {
+        await adapter.connect();
+        return { authorized: true, authToken: '', publicKey: adapter.publicKey, connection: adapter};
+      } catch (error) {
+        return { authorized: false, authToken: '', publicKey: '', connection: null};
+        }
+      }
 
   async reauthorize(): Promise<{     
     reauthorized: boolean,
@@ -111,15 +78,10 @@ export class SolanaWalletAdaptorWeb
   async deauthorize(options: {authToken: string, connection: PhantomWalletAdapter}): Promise<{ 
     deauthorized: boolean
    }> {
-     console.log('Connection');
-     options.connection.disconnect();    
+     options.connection.disconnect();
      return { deauthorized: true };
 
    }
-
-
-
-
 
   async signTransactions() : Promise<{success: boolean}> {
     return {success: true};

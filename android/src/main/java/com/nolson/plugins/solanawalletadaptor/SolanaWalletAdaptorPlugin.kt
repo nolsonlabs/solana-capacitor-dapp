@@ -41,15 +41,9 @@ class SolanaWalletAdaptorPlugin : Plugin() {
     }
 
     @PluginMethod
-    fun installedApps(call: PluginCall) {
-        val ret = JSObject()
+    fun getWalletAndEnvironmentInfo(call: PluginCall) {
         val data = implementation.installedApps(activity.packageManager)
-
-        ret.put(
-            "installed",
-            data
-        )
-        call.resolve(ret)
+        call.resolve(data)
     }
 
     @PluginMethod

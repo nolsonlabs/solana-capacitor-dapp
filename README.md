@@ -1,7 +1,13 @@
 <img src="https://github.com/nolsonlabs/solana-capacitor-dapp/blob/main/Solana-Mobile-x-Capacitor.png?raw=true">.
 
-<h1>CapacitorJS plugin for Solana dApps</h1>  
+<h1>CapacitorJS plugin for Solana dApps</h1>
 
+  <h3>TLDR;</h3>
+  <p>Install the plugin for use in any web app: "npm i solana-wallet-adaptor-capacitor"</p>
+
+  <p>API notes are <a href="https://github.com/nolsonlabs/solana-capacitor-dapp/blob/main/API.md">here</a></p>
+
+  <h3>What is this project?</h3>
   <p>This project exists to help drive the adoption of Solana SDKs across mobile & web. The idea is make it easier for more developers to build cross-platform dApps by providing an open source CapacitorJS plugin based on the existing Solana SDKs <p>
     
   <p>Capacitor is part of the Ionic ecosysystem and has a large and active community of developers. Capacitor/Ionic is found in approximately 10% of all Apps on Google Play and the App Store and averages around 200,000 weekly downloads on npm.</p>
@@ -16,7 +22,7 @@
   <p>The plugin was built as a to illustrate the concept in just over a week at the Singapore Solana Summer Camp 2022. <b>It is definitely not ready for production use.</b></p>
   <p>The plugin is a wrapper around the Kotlin "fakedapp" Android application build by the Solana Mobile team (see https://github.com/solana-mobile/mobile-wallet-adapter/tree/main/android/fakedapp). It allows a developer building a web app to access to all the methods in MainViewModel.kt in the underlying Kotlin project.</p>
   <p>Wallet detection functionality has also been added. The plugin is able to detect which apps are installed and available in the environment in which it is running (i.e. web browser or Android).</p>
-  <p>The current implementation for Android relies on manifest permissions settings that may require prior agreement from moderators for Play Store disttribution.</p>
+  <p>The current implementation for Android relies on manifest permissions settings that may require prior agreement from moderators for Play Store distribution.</p>
   <p>This functionlity is only currently only implemented for wallets that offer transaction / deeplink functionality.</p>
   <h4>Demo & Installation</h4>
   <p>The code is this repo is the Capacitor source code for the plugin.</p>
