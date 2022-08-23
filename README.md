@@ -5,9 +5,13 @@
   <h3>TLDR;</h3>
   <p>Install the plugin for use in any web app: "npm i solana-wallet-adaptor-capacitor"</p>
 
-  <p>API notes are <a href="https://github.com/nolsonlabs/solana-capacitor-dapp/blob/main/API.md">here</a></p>
+  <p>API notes are <a href="https://github.com/nolsonlabs/solana-capacitor-dapp/blob/main/API.md">here</a>.</p>
 
   <p>Web deployment of demo app: https://solana-mobile-capacitor.web.app/</p>
+
+  <p>Current version was built to illustrate the concept in just over a week at the Singapore Solana Summer Camp 2022. <b>It is definitely not ready for production use.</b></p>
+
+  <p>Free and open source. Comments, questions, feedback and contributions most welcome.</p>
 
   <h3>What is this project?</h3>
   <p>This project exists to help drive the adoption of Solana SDKs across mobile & web. The idea is make it easier for more developers to build cross-platform dApps by providing an open source CapacitorJS plugin based on the existing Solana SDKs <p>
