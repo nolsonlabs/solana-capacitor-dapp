@@ -1,9 +1,9 @@
 <img src="https://github.com/nolsonlabs/solana-capacitor-dapp/blob/main/Solana-Mobile-x-Capacitor.png?raw=true">.
 
-<h1>CapacitorJS plugin for Solana dApps</h1>
+<h1>Capacitor plugin for Solana dApps</h1>
 
   <h3>TLDR;</h3>
-  <p>Install the plugin for use in any web app: "npm i solana-wallet-adaptor-capacitor"</p>
+  <p>Install the plugin for use in any web app: "npm i solana-wallet-adaptor-capacitor". Installation notes are <a href="https://github.com/nolsonlabs/solana-capacitor-dapp-demo/blob/main/README.md">here.</a></p>
 
   <p>API notes are <a href="https://github.com/nolsonlabs/solana-capacitor-dapp/blob/main/API.md">here</a>.</p>
 
@@ -14,7 +14,7 @@
   <p>Free and open source. Comments, questions, feedback and contributions most welcome.</p>
 
   <h3>What is this project?</h3>
-  <p>This project exists to help drive the adoption of Solana SDKs across mobile & web. The idea is make it easier for more developers to build cross-platform dApps by providing an open source CapacitorJS plugin based on the existing Solana SDKs <p>
+  <p>This project exists to help drive the adoption of Solana SDKs across mobile & web. The idea is make it easier for more developers to build cross-platform dApps by providing an open source Capacitor plugin based on the existing Solana SDKs.<p>
     
   <p>Capacitor is part of the Ionic ecosysystem and has a large and active community of developers. Capacitor/Ionic is found in approximately 10% of all Apps on Google Play and the App Store and averages around 200,000 weekly downloads on npm.</p>
   
@@ -38,8 +38,8 @@
   
   <h3>Next steps</h3>
   <h4>Overall direction</h4>
-  <p>I propose to run this project on an open source community-backed basis with a permissive license e.g. MIT/Apache2. Solana is already known for the strength of it's developer community so my hope is that there will be appetite from the community to support this project.</p>
-  <p>At the Summer Camp I was also in touch with Max Lynch who is CEO and founder of Ionic/Capacitor. Whilst I do not want to speak for him here, over the years I have seen Max and his team go out of their way to support the CapacitorJS community. I am sure the Ionic folks would be able to help promote a Solana plugin to the community if we can create something production ready.</p>
+  <p>I propose to run this project on an open source community-backed basis with a permissive license e.g. MIT/Apache2. Solana is already known for the strength of it's developer community so my hope is that there will be appetite to participate in this project.</p>
+  <p>Over the years I have seen the Ionic & Capacitor team go out of their way to support the Capacitor community. I don't speak for them here but I am sure the Ionic folks would be able to help promote a Solana plugin to the community if we can create something production ready.</p>
   <h4>Project design</h4>
   <p>Through the Summer Camp I focused on creating a working POC focused on the new Android SDK for the 'fakedapp' provided by the core team. In the long run I see a case for two plugins, one for dApps and another for wallet projects. This would depend on the Solana Mobile team's roadmap and plans for the core libraries.</p>
   <p>I will post my notes on a potential API for the Capacitor plugin in the next day or so.</p>
