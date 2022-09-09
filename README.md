@@ -15,9 +15,9 @@
 
   <p>Free and open source. Comments, questions, feedback and contributions most welcome.</p>
 
-  <p><b>Demo</b></p>
+  <p><b>Demo video on Twitter</b></p>
 
-  <blockquote class="twitter-tweet"><p lang="en" dir="ltr">📺<a href="https://twitter.com/solana?ref_src=twsrc%5Etfw">@solana</a> x <a href="https://twitter.com/capacitorjs?ref_src=twsrc%5Etfw">@capacitorjs</a> demo<br>🛠️Build web apps on <a href="https://twitter.com/solanamobile?ref_src=twsrc%5Etfw">@solanamobile</a> native SDKs using your favourite Javascript framework! <a href="https://t.co/pPAe7K6X9W">pic.twitter.com/pPAe7K6X9W</a></p>&mdash; Solana x Capacitor (@solanacapacitor) <a href="https://twitter.com/solanacapacitor/status/1568079874937733120?ref_src=twsrc%5Etfw">September 9, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <blockquote class="twitter-tweet"><p lang="en" dir="ltr">📺<a href="https://twitter.com/solana?ref_src=twsrc%5Etfw">@solana</a> x <a href="https://twitter.com/capacitorjs?ref_src=twsrc%5Etfw">@capacitorjs</a> demo<br>🛠️Build web apps on <a href="https://twitter.com/solanamobile?ref_src=twsrc%5Etfw">@solanamobile</a> native SDKs using your favourite Javascript framework! <a href="https://t.co/pPAe7K6X9W">pic.twitter.com/pPAe7K6X9W</a></p>&mdash; Solana x Capacitor (@solanacapacitor) <a href="https://twitter.com/solanacapacitor/status/1568079874937733120?ref_src=twsrc%5Etfw">September 9, 2022</a></blockquote>
 
   <h3>What is this project?</h3>
   <p>This project exists to help drive the adoption of Solana SDKs across mobile & web. The idea is make it easier for more developers to build cross-platform dApps by providing an open source Capacitor plugin based on the existing Solana SDKs.<p>
