@@ -9,9 +9,15 @@
 
   <p>Web deployment of demo app: https://solana-mobile-capacitor.web.app/</p>
 
+  <p>Wallet plugin which is available <a href="https://github.com/nolsonlabs/solana-capacitor-wallet">here</a>.
+
   <p>Current version was built to illustrate the concept in just over a week at the Singapore Solana Summer Camp 2022. <b>It is definitely not ready for production use.</b></p>
 
   <p>Free and open source. Comments, questions, feedback and contributions most welcome.</p>
+
+  <p><b>Demo</b></p>
+
+  <blockquote class="twitter-tweet"><p lang="en" dir="ltr">📺<a href="https://twitter.com/solana?ref_src=twsrc%5Etfw">@solana</a> x <a href="https://twitter.com/capacitorjs?ref_src=twsrc%5Etfw">@capacitorjs</a> demo<br>🛠️Build web apps on <a href="https://twitter.com/solanamobile?ref_src=twsrc%5Etfw">@solanamobile</a> native SDKs using your favourite Javascript framework! <a href="https://t.co/pPAe7K6X9W">pic.twitter.com/pPAe7K6X9W</a></p>&mdash; Solana x Capacitor (@solanacapacitor) <a href="https://twitter.com/solanacapacitor/status/1568079874937733120?ref_src=twsrc%5Etfw">September 9, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
   <h3>What is this project?</h3>
   <p>This project exists to help drive the adoption of Solana SDKs across mobile & web. The idea is make it easier for more developers to build cross-platform dApps by providing an open source Capacitor plugin based on the existing Solana SDKs.<p>
@@ -42,7 +48,7 @@
   <p>Over the years I have seen the Ionic & Capacitor team go out of their way to support the Capacitor community. I don't speak for them here but I am sure the Ionic folks would be able to help promote a Solana plugin to the community if we can create something production ready.</p>
   <h4>Project design</h4>
   <p>Through the Summer Camp I focused on creating a working POC focused on the new Android SDK for the 'fakedapp' provided by the core team. In the long run I see a case for two plugins, one for dApps and another for wallet projects. This would depend on the Solana Mobile team's roadmap and plans for the core libraries.</p>
-  <p>I will post my notes on a potential API for the Capacitor plugin in the next day or so.</p>
+
   <h4>Code / existing implementation</h4>
   <p>Because the focus was on allowing web developers to access the 'fakedapp' native functionality, some more thought is required around how the 'fakedapp' functionality maps to the functionality provided by the web wallet adaptor.</p>
   <p>The demo application fully replicates the 'fakedapp' app. Additionally it allows developers get available wallets for any given environment. The next step will be to map 'fakedapp' functionality to the web SDKs the define an appropriate API/interfaces.</p>
