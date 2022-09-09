@@ -9,7 +9,7 @@
 
   <p>Web deployment of demo app: https://solana-mobile-capacitor.web.app/</p>
 
-  <p>Wallet plugin which is available <a href="https://github.com/nolsonlabs/solana-capacitor-wallet">here</a>.
+  <p>Wallet plugin available <a href="https://github.com/nolsonlabs/solana-capacitor-wallet">here</a>.
 
   <p>Current version was built to illustrate the concept in just over a week at the Singapore Solana Summer Camp 2022. <b>It is definitely not ready for production use.</b></p>
 
